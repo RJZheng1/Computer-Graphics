@@ -27,7 +27,19 @@ def draw_line( screen, x0, y0, x1, y1, color ):
                     x0 += 1
                     d += A
         else:
-            if(y1 - y0 > x1 - x0):
-                pass
+            if(y0 - y1 > x1 - x0):
+                while(y0 != y1):
+                    plot(screen, color, x0, y0)
+                    if(d > 0):
+                        x0 += 1
+                        d += A
+                    y0 -= 1
+                    d -= B
             else:
-                pass
+                while(x0 != x1):
+                    plot(screen, color, x0, y0)
+                    if(d < 0):
+                        y0 -= 1
+                        d -= B
+                    x0 += 1
+                    d += A
