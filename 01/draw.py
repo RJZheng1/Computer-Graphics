@@ -11,7 +11,13 @@ def draw_line( screen, x0, y0, x1, y1, color ):
         B += B
         if(y1 - y0 > 0):
             if(y1 - y0 > x1 - x0):
-                pass
+                while(y0 != y1):
+                    plot(screen, color, x0, y0)
+                    if(d < 0):
+                        x0 += 1
+                        d += A
+                    y0 += 1
+                    d += B
             else:
                 while(x0 != x1):
                     plot(screen, color, x0, y0)
