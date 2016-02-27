@@ -24,7 +24,11 @@ def new_matrix(rows = 4, cols = 4):
     return m
 
 def print_matrix( matrix ):
-    pass
+    for x in xrange(len(matrix)):
+        s = ''
+        for y in xrange(len(matrix[x])):
+            s += str(matrix[x][y]) + '\t'
+        print s
 
 def ident( matrix ):
     pass
@@ -32,7 +36,12 @@ def ident( matrix ):
 def scalar_mult( matrix, x ):
     pass
 
-#m1 * m2 -> m2
-def matrix_mult( m1, m2 ):
-    pass
-
+def matrix_mult(m1, m2):
+    m = new_matrix(len(m2[0]), len(m1))
+    for x in xrange(len(m1)):
+        for y in xrange(len(m2[0])):
+            sum = 0
+            for i in xrange(len(m2)):
+                sum += m1[x][i] * m2[i][y]
+            m[x][y] = sum
+    return m

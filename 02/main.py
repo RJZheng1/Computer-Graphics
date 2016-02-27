@@ -15,4 +15,16 @@ add_point(matrix, 73, 51, 0)
 
 draw_lines(matrix, screen, color)
 
+m1 = [[1, 3, 5, 7],
+      [2, 4, 6, 8]]
+
+m2 = [[1, 8, 9],
+      [2, 7, 10],
+      [3, 6, 11],
+      [4, 5, 12]]
+
+m3 = matrix_mult(m1, m2)
+
+print_matrix(m3)
+
 display(screen)
