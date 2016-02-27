@@ -34,8 +34,12 @@ def ident( matrix ):
     pass
 
 def scalar_mult( matrix, x ):
-    pass
-
+    m = new_matrix(len(matrix[0]), len(matrix))
+    for r in xrange(len(matrix)):
+        for c in xrange(len(matrix[r])):
+            m[r][c] = x * matrix[r][c]
+    return m
+            
 def matrix_mult(m1, m2):
     m = new_matrix(len(m2[0]), len(m1))
     for x in xrange(len(m1)):
