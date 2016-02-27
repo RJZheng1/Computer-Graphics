@@ -1,20 +1,35 @@
-import math
+from math import sin, cos
 
 def make_translate( x, y, z ):
-    pass
+    return [[1, 0, 0, x],
+            [0, 1, 0, y],
+            [0, 0, 1, z],
+            [0, 0, 0, 1]]
 
 def make_scale( x, y, z ):
-    pass
+    return [[x, 0, 0, 0],
+            [0, y, 0, 0],
+            [0, 0, z, 0],
+            [0, 0, 0, 1]]
     
-def make_rotX( theta ):   
-    pass
+def make_rotX( theta ):
+    return [[1, 0, 0, 0],
+            [0, cos(theta), -sin(theta), 0],
+            [0, sin(theta), cos(theta), 0],
+            [0, 0, 0, 1]]
 
 def make_rotY( theta ):
-    pass
+    return [[cos(theta), 0, -sin(theta), 0],
+            [0, 1, 0, 0],
+            [sin(theta), 0, cos(theta), 0],
+            [0, 0, 0, 1]]
 
 def make_rotZ( theta ):
-    pass
-
+    return [[cos(theta), -sin(theta), 0, 0],
+            [sin(theta), cos(theta), 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1]]
+                
 def new_matrix(rows = 4, cols = 4):
     m = []
     for c in range( cols ):

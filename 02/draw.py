@@ -3,19 +3,26 @@ from matrix import *
 
 
 def draw_lines( matrix, screen, color ):
-    for i in xrange(0, len(matrix)-1, 2):
-        draw_line(screen, matrix[i][0], matrix[i][1], matrix[i+1][0], matrix[i+1][1], color)
+    for i in xrange(0, len(matrix[0])-1, 2):
+        draw_line(screen, matrix[0][i], matrix[1][i], matrix[0][i+1], matrix[1][i+1], color)
 
 def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
-    m = [[x0, y0, z0, 1], [x1, y1, z1, 1]]
-    matrix.extend(m)
+    matrix[0].extend([x0, x1])
+    matrix[1].extend([y0, y1])
+    matrix[2].extend([z0, z1])
+    matrix[3].extend([1, 1])
     
 def add_point( matrix, x, y, z=0 ):
-    m = [x, y, z, 1]
-    matrix.append(m)
-
+    matrix[0].append(x)
+    matrix[1].append(y)
+    matrix[2].append(z)
+    matrix[3].append(1)
 
 def draw_line( screen, x0, y0, x1, y1, color ):
+    x0 = int(x0+0.5)
+    y0 = int(y0+0.5)
+    x1 = int(x1+0.5)
+    y1 = int(y1+0.5)
     dx = x1 - x0
     dy = y1 - y0
     if dx + dy < 0:
