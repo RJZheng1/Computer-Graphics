@@ -19,6 +19,8 @@ matrix = matrix_mult(make_translate(200, 200, 0), matrix)
 
 matrix = matrix_mult(make_rotZ(pi/12), matrix)
 
+print_matrix(ident(matrix))
+
 draw_lines(matrix, screen, color)
 
 display(screen)

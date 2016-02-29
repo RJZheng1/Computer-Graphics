@@ -46,7 +46,10 @@ def print_matrix( matrix ):
         print s
 
 def ident( matrix ):
-    pass
+    m = new_matrix(len(matrix), len(matrix))
+    for i in xrange(len(matrix)):
+        m[i][i] = 1
+    return m
 
 def scalar_mult( matrix, x ):
     m = new_matrix(len(matrix[0]), len(matrix))
