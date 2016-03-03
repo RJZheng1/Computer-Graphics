@@ -1,7 +1,6 @@
 from display import *
 from draw import *
 from math import pi
-from copy import deepcopy
 
 screen = new_screen()
 color = [ 0, 255, 0 ]
@@ -30,14 +29,12 @@ for a in xrange(720):
     edge[1].extend(matrix[1])
     edge[2].extend(matrix[2])
     edge[3].extend(matrix[3])
-
-for a in xrange(0,360,60):
-    matrix = deepcopy(edge)
-    theta = a*pi/180
+    
+for a in xrange(6):
     trans_matrix = matrix_mult(
-        matrix_mult(make_translate(x,y,0), make_rotZ(theta)),
+        matrix_mult(make_translate(x,y,0), make_rotZ(pi/3)),
         make_translate(-x,-y,0))
-    matrix = matrix_mult(trans_matrix, matrix)    
-    draw_lines(matrix, screen, color)
+    edge = matrix_mult(trans_matrix, edge)
+    draw_lines(edge, screen, color)
 
 display(screen)
