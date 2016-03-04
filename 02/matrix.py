@@ -74,5 +74,3 @@ def matrix_mult(m1, m2):
             m[x][y] = sum
     return m
 
-print_matrix(make_rotZ(0))
-
