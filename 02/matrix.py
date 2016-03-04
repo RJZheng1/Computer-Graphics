@@ -1,3 +1,6 @@
+#!/usr/local/bin/python
+# coding=utf-8
+
 from math import sin, cos
 
 def make_translate( x, y, z ):
@@ -43,6 +46,12 @@ def print_matrix( matrix ):
         s = ''
         for y in xrange(len(matrix[x])):
             s += str(matrix[x][y]) + '\t'
+        if x == 0:
+            s = unicode(u'\u23a1' + s + u'\u23a4')
+        elif x == len(matrix) - 1:
+            s = unicode(u'\u23a3' + s + u'\u23a6')
+        else:
+            s = '|' + s + '|'
         print s
 
 def ident( matrix ):
@@ -67,3 +76,6 @@ def matrix_mult(m1, m2):
                 sum += m1[x][i] * m2[i][y]
             m[x][y] = sum
     return m
+
+print_matrix(make_rotZ(0))
+

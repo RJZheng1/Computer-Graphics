@@ -38,3 +38,5 @@ for a in xrange(6):
     draw_lines(edge, screen, color)
 
 display(screen)
+
+print_matrix(edge)
