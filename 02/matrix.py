@@ -1,6 +1,3 @@
-#!/usr/bin/python
-#coding=UTF8
-
 from math import sin, cos
 
 def make_translate( x, y, z ):
@@ -46,10 +43,11 @@ def print_matrix( matrix ):
         s = ''
         for y in xrange(len(matrix[x])):
             s += str(matrix[x][y]) + '\t'
+
         if x == 0:
-            print u'\u23a1' + s + u'\u23a4'
+            print (u'\u23a1' + s + u'\u23a4').encode("utf-8")
         elif x == len(matrix) - 1:
-            print u'\u23a3' + s + u'\u23a6'
+            print (u'\u23a3' + s + u'\u23a6').encode("utf-8")
         else:
             print '|' + s + '|'
 
