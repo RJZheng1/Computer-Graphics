@@ -1,5 +1,5 @@
-#!/usr/local/bin/python
-# coding=utf-8
+#!/usr/bin/python
+#coding=UTF8
 
 from math import sin, cos
 
@@ -47,12 +47,11 @@ def print_matrix( matrix ):
         for y in xrange(len(matrix[x])):
             s += str(matrix[x][y]) + '\t'
         if x == 0:
-            s = unicode(u'\u23a1' + s + u'\u23a4')
+            print u'\u23a1' + s + u'\u23a4'
         elif x == len(matrix) - 1:
-            s = unicode(u'\u23a3' + s + u'\u23a6')
+            print u'\u23a3' + s + u'\u23a6'
         else:
-            s = '|' + s + '|'
-        print s
+            print '|' + s + '|'
 
 def ident( matrix ):
     m = new_matrix(len(matrix), len(matrix))
