@@ -49,7 +49,7 @@ def print_matrix( matrix ):
         elif x == len(matrix) - 1:
             print (u'\u23a3' + s + u'\u23a6').encode("utf-8")
         else:
-            print '|' + s + '|'
+            print (u'\u23a2' + s + u'\u23a5').encode("utf-8")
 
 def ident( matrix ):
     m = new_matrix(len(matrix), len(matrix))
@@ -73,4 +73,3 @@ def matrix_mult(m1, m2):
                 sum += m1[x][i] * m2[i][y]
             m[x][y] = sum
     return m
-
