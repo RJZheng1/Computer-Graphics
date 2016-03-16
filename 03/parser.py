@@ -7,6 +7,7 @@ def parse_file( fname, points, transform, screen, color ):
     i = 0
     while i < len(f):
         if f[i] == "display":
+            clear_screen(screen)
             draw_lines(points, screen, color)
             display(screen)
         elif f[i] == "save":
