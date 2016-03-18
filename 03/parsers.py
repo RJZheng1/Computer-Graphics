@@ -44,7 +44,7 @@ def parse_file( fname, points, transform, screen, color ):
                 if len(p) != 3:
                     print "There should only be 3 dimensions to translate"
                 else:
-                    matrix_mult(make_translate(p[0], p[1], p[2]), transform)            
+                    matrix_mult(make_translate(p[0], p[1], p[2]), transform)     
             except ValueError:
                 print "You should be translating by numbers"
         elif f[i] == "xrotate":
@@ -69,3 +69,17 @@ def parse_file( fname, points, transform, screen, color ):
             except ValueError:
                 print "There should only be one angle to rotate by"
         i += 1
+        elif f[i] == "circle":
+            i += 1
+            try:
+                p = map(lambda x: float(x), f[i].split())
+                if len(p) != 3:
+                    print "There should only be 3 numbers: cx, cy, and r"
+                else:
+                    add_circle(points, p[0], p[1], 0, p[2], 0.01)
+            except ValueError:
+                print "The values should be numbers"
+        elif f[i] == "hermite":
+            pass
+        elif "bezier":
+            pass
