@@ -1,13 +1,22 @@
 import math
 
 def make_bezier():
-    pass
+    return [[-1, 3, -3, 1],
+            [3, -6, 3, 0],
+            [-3, 3, 0, 0],
+            [1, 0, 0, 0]]
 
 def make_hermite():
-    pass
+    return [[2, -3, 0, 1],
+            [-2, 3, 0, 0],
+            [1, -2, 1, 0],
+            [1, -1, 0, 0]]
 
 def generate_curve_coefs( p1, p2, p3, p4, t ):
-    pass
+    m = [[p1[0], p2[0], p3[0], p4[0]],
+         [p1[1], p2[1], p3[1], p4[1]]]
+    matrix_mult(t, m)
+    return m
 
 def make_translate( x, y, z ):
     t = new_matrix()
@@ -93,5 +102,3 @@ def matrix_mult( m1, m2 ):
             
         for r in range(4):
             m2[c][r] = m1[0][r] * t[0][0] + m1[1][r] * t[0][1] + m1[2][r] * t[0][2] + m1[3][r] * t[0][3]
-
-
