@@ -68,7 +68,6 @@ def parse_file( fname, points, transform, screen, color ):
                 matrix_mult(make_rotZ(p), transform)
             except ValueError:
                 print "There should only be one angle to rotate by"
-        i += 1
         elif f[i] == "circle":
             i += 1
             try:
@@ -76,10 +75,27 @@ def parse_file( fname, points, transform, screen, color ):
                 if len(p) != 3:
                     print "There should only be 3 numbers: cx, cy, and r"
                 else:
-                    add_circle(points, p[0], p[1], 0, p[2], 0.01)
+                    add_circle(points, p[0], p[1], 0, p[2], 100)
             except ValueError:
                 print "The values should be numbers"
         elif f[i] == "hermite":
-            pass
-        elif "bezier":
-            pass
+            i += 1
+            try:
+                p = map(lambda x: float(x), f[i].split())
+                if len(p) != 8:
+                    print "There should only be 8 numbers"
+                else:
+                    add_curve(points, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], 100, 0)
+            except ValueError:
+                print "The values should be numbers"
+        elif f[i] == "bezier":
+            i += 1
+            try:
+                p = map(lambda x: float(x), f[i].split())
+                if len(p) != 8:
+                    print "There should only be 8 numbers"
+                else:
+                    add_curve(points, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], 100, 1)
+            except ValueError:
+                print "The values should be numbers"
+        i += 1

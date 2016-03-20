@@ -1,9 +1,14 @@
 from display import *
 from matrix import *
-import math
+from math import cos, sin, pi
 
 def add_circle( points, cx, cy, cz, r, step ):
-    pass
+    t = 0
+    while t < 1.001:
+        x = cx + r*cos(2*pi*t)
+        y = cy + r*sin(2*pi*t)
+        t += 1.0/step
+        add_edge(points, x, y, cz, cx+r*cos(2*pi*t), cy+r*sin(2*pi*t), cz)
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     pass
