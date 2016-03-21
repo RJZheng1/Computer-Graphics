@@ -85,7 +85,7 @@ def parse_file( fname, points, transform, screen, color ):
                 if len(p) != 8:
                     print "There should only be 8 numbers"
                 else:
-                    add_curve(points, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], 100, 0)
+                    add_curve(points, p[0], p[1], p[4], p[5], p[2]-p[0], p[3]-p[1], p[6]-p[4], p[7]-p[5], 100, 0)
             except ValueError:
                 print "The values should be numbers"
         elif f[i] == "bezier":
@@ -98,4 +98,6 @@ def parse_file( fname, points, transform, screen, color ):
                     add_curve(points, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], 100, 1)
             except ValueError:
                 print "The values should be numbers"
+        elif f[i] == "exit":
+            break
         i += 1
