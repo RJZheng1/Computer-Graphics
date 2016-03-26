@@ -52,8 +52,10 @@ def save_extension( screen, fname ):
     p = Popen( ['convert', ppm_name, fname ], stdin=PIPE, stdout = PIPE )
     p.communicate()
     if p.returncode != 0:
-        p = Popen( ['imconvert', ppm_name, fname ], stdin=PIPE, stdout = PIPE )
-    remove(ppm_name)
+        Popen.wait(Popen( ['imconvert', ppm_name, fname ], stdin=PIPE, stdout = PIPE ))
+        remove(ppm_name)
+    else:
+        remove(ppm_name)
 
 def display( screen ):
     ppm_name = 'pic.ppm'
