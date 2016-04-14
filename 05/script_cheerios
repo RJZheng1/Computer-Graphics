@@ -1,0 +1,32 @@
+box
+-125 125 125 250 250 250
+torus
+-100 -100 10 20
+torus
+-100 0 10 20
+torus
+-100 100 10 20
+torus
+0 -100 10 20
+torus
+0 0 10 20
+torus
+0 100 10 20
+torus
+100 -100 10 20
+torus
+100 0 10 20
+torus
+100 100 10 20
+ident
+zrotate
+20
+xrotate
+45
+translate
+250 250 0
+apply
+display
+save
+pic.png
+quit

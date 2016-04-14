@@ -1,0 +1,10 @@
+sphere
+0 0 200
+ident
+translate
+250 250 0
+apply
+display
+save
+pic.png
+quit
