@@ -2,7 +2,7 @@ from display import *
 from matrix import *
 from draw import *
 
-ARG_COMMANDS = [ 'line', 'scale', 'translate', 'xrotate', 'yrotate', 'zrotate', 'circle', 'bezier', 'hermite', 'sphere', 'box', 'torus']
+ARG_COMMANDS = [ 'line', 'scale', 'translate', 'xrotate', 'yrotate', 'zrotate', 'circle', 'bezier', 'hermite', 'sphere', 'box', 'torus', 'push', 'pop']
 
 def parse_file( f, points, transform, screen, color ):
 
@@ -40,7 +40,6 @@ def parse_file( f, points, transform, screen, color ):
             elif cmd == 'box':
                 add_box( points, args[0], args[1], args[2], args[3], args[4], args[5] )
 
-
             elif cmd == 'scale':
                 s = make_scale( args[0], args[1], args[2] )
                 matrix_mult( s, transform )
@@ -48,6 +47,12 @@ def parse_file( f, points, transform, screen, color ):
             elif cmd == 'translate':
                 t = make_translate( args[0], args[1], args[2] )
                 matrix_mult( t, transform )
+
+            elif cmd == 'push':
+                pass
+
+            elif cmd == 'pop':
+                pass
 
             else:
                 angle = args[0] * ( math.pi / 180 )
