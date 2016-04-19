@@ -1,8 +1,9 @@
 from display import *
 from matrix import *
 from draw import *
+from copy import deepcopy
 
-ARG_COMMANDS = [ 'line', 'scale', 'translate', 'xrotate', 'yrotate', 'zrotate', 'circle', 'bezier', 'hermite', 'sphere', 'box', 'torus', 'push', 'pop']
+ARG_COMMANDS = [ 'line', 'scale', 'translate', 'xrotate', 'yrotate', 'zrotate', 'circle', 'bezier', 'hermite', 'sphere', 'box', 'torus']
 
 def parse_file( f, points, transform, screen, color ):
 
@@ -12,7 +13,7 @@ def parse_file( f, points, transform, screen, color ):
     while c  <  len(commands):
         cmd = commands[c].strip()
         if cmd in ARG_COMMANDS:
-            c+= 1
+            c += 1
             args = commands[c].strip().split(' ')
             i = 0
             while i < len( args ):
@@ -77,20 +78,11 @@ def parse_file( f, points, transform, screen, color ):
                     r = make_rotY( angle )
                 elif cmd == 'zrotate':
                     r = make_rotZ( angle )
-                    matrix_mult( r, transform[len(transform)-1] )
-
-        elif cmd == 'ident':
-            ident( transform )
-            
-        elif cmd == 'apply':
-            matrix_mult( transform, points )
-
-        elif cmd == 'clear':
-            points = []
-
+                matrix_mult( r, transform[len(transform)-1] )
+                
         elif cmd == 'push':
-            transform.append(copy.deepcopy(transform[len(transform)-1]))
- 
+            transform.append(deepcopy(transform[len(transform)-1]))
+            
         elif cmd == 'pop':
             transform.pop()
 
