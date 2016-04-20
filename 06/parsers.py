@@ -95,7 +95,7 @@ def parse_file( f, points, transform, screen, color ):
                 screen = new_screen()
 
             elif cmd == 'save':
-                c+= 1
+                c += 1
                 save_extension( screen, commands[c].strip() )
 
         elif cmd == 'quit':

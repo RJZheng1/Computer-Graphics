@@ -1,0 +1,41 @@
+push
+translate
+250 250 0
+sphere
+0 0 100
+push
+translate
+100 0 0
+sphere
+0 0 100
+pop
+push
+translate
+-100 0 0
+sphere
+0 0 100
+pop
+push
+translate
+0 100 0
+sphere
+0 0 100
+pop
+push
+translate
+0 -100 0
+sphere
+0 0 100
+pop
+push
+torus
+0 0 10 200
+pop
+push
+zrotate
+90
+torus
+0 0 10 200
+save
+pic.png
+quit
