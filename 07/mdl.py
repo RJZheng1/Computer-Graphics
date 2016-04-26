@@ -32,7 +32,7 @@ tokens = (
     "VARY", 
     "PUSH", 
     "POP", 
-    "SAVE", 
+    "SAVE",
     "GENERATE_RAYFILES", 
     "SHADING", 
     "SHADING_TYPE", 
@@ -41,7 +41,8 @@ tokens = (
     "DISPLAY", 
     "SCREEN", 
     "WEB", 
-    "CO"
+    "CO", 
+    "QUIT"
 )
 
 reserved = {
@@ -85,7 +86,8 @@ reserved = {
     "set_knobs" : "SET_KNOBS", 
     "focal" : "FOCAL", 
     "display" : "DISPLAY", 
-    "web" : "WEB"
+    "web" : "WEB", 
+    "quit": "QUIT"
 }
 
 t_ignore = " \t"
@@ -113,7 +115,7 @@ def t_INT(t):
     return t
 
 def t_COMMENT(t):
-    r"//.*"
+    r"\#.*"
     return t
 
 def t_CO(t):
@@ -162,6 +164,10 @@ def p_statement_show(p):
                  | DISPLAY"""
     commands.append(tuple(p[1:]))
 
+def p_statement_quit(p):
+    'statement : QUIT'
+    commands.append((p[1],))
+    
 def p_statement_knobs(p):
     """statement : SET SYMBOL NUMBER
                  | SET_KNOBS NUMBER"""
