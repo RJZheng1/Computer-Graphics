@@ -22,6 +22,7 @@ def run(filename):
 
     stack = [ tmp ]
     screen = new_screen()
+    tmp = []
     
     for command in commands:
         if command[0] == 'push':
@@ -31,9 +32,9 @@ def run(filename):
             stack.pop()
             
         elif command[0] == 'move':
-                t = make_translate( command[1], command[2], command[3] )
-                matrix_mult( stack[-1], t )
-                stack[-1] = t
+            t = make_translate( command[1], command[2], command[3] )
+            matrix_mult( stack[-1], t )
+            stack[-1] = t
 
         elif command[0] == 'rotate':
             angle = command[2] * ( math.pi / 180 )
@@ -47,31 +48,34 @@ def run(filename):
             stack[-1] = r
 
         elif command[0] == 'scale':
-                s = make_scale( command[1], command[2], command[3] )
-                matrix_mult( stack[-1], s )
-                stack[-1] = s
-                
+            s = make_scale( command[1], command[2], command[3] )
+            matrix_mult( stack[-1], s )
+            stack[-1] = s
+
         elif command[0] == 'box':
-            pass
+            add_box( tmp, command[1], command[2], command[3], command[4], command[5], command[6] )
+            matrix_mult(stack[-1], tmp)
+            draw_polygons(tmp, screen, color)
+            tmp = []
             
         elif command[0] == 'sphere':
-            pass
+            add_sphere( tmp, command[1], command[2], command[3], command[4], 5 )
+            matrix_mult(stack[-1], tmp)
+            draw_polygons(tmp, screen, color)
+            tmp = []
 
         elif command[0] == 'torus':
-            pass
+            add_torus( tmp, command[1], command[2], command[3], command[4], command[5], 5 )
+            matrix_mult(stack[-1], tmp)
+            draw_polygons(tmp, screen, color)
+            tmp = []
 
         elif command[0] == 'line':
-            pass
+            add_edge( tmp, command[1], command[2], command[3], command[4], command[5], command[6] )
+            matrix_mult(stack[-1], tmp)
+            draw_lines(tmp, screen, color)
+            tmp = []
 
-        elif command[0] == 'circle':
-            pass
-
-        elif command[0] == 'bezier':
-            pass
-
-        elif command[0] == 'hermite':
-            pass
-        
         elif command[0] == 'save':
             save_extension(screen, commands[1])
 
